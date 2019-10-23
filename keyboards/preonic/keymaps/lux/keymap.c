@@ -171,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  KC_CIRC,  KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,   _______, \
+  KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
   KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  KC_CIRC,  KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,   _______,  \
   KC_DEL,   KC_MPLY, KC_MUTE, KC_BSPC, KC_ENT,  KC_GESC,  _______,  KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,   KC_PIPE, \
   _______,  KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, SWAPL,    SWAPR,    KC_MUTE, _______, _______, _______,   _______, \
