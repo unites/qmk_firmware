@@ -42,3 +42,4 @@
 #define COMBO_COUNT 5
 #define COMBO_TERM 200
 #define TAPPING_TERM 200
+#define LEADER_TIMEOUT 300

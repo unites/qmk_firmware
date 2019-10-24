@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_ENT,  \
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,  \
-  KC_LCTL,  MO(_FN), KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_LEAD,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Qwerty Alt Enter
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,  \
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
   KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,  \
-  KC_LCTL,  MO(_FN), KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  MO(_FN),  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Colemak
@@ -341,6 +341,8 @@ void dip_switch_update_user(uint8_t index, bool active) {
 }
 
 
+LEADER_EXTERNS();
+
 void matrix_scan_user(void) {
 #ifdef AUDIO_ENABLE
     if (muse_mode) {
@@ -360,7 +362,38 @@ void matrix_scan_user(void) {
         }
     }
 #endif
+
+
+// Leader Key values --------
+
+
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_F) {
+      // Anything you can do in a macro.
+      SEND_STRING("QMK is awesome.");
+    }
+    SEQ_TWO_KEYS(KC_D, KC_D) {
+      SEND_STRING(SS_LCTRL("a")SS_LCTRL("c"));
+    }
+    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
+      SEND_STRING("https://start.duckduckgo.com"SS_TAP(X_ENTER));
+    }
+    SEQ_TWO_KEYS(KC_A, KC_S) {
+      register_code(KC_LGUI);
+      register_code(KC_S);
+      unregister_code(KC_S);
+      unregister_code(KC_LGUI);
+    }
+  }
+  
+// Leader Key values END -------
 }
+
+
+
 
 bool music_mask_user(uint16_t keycode) {
   switch (keycode) {
