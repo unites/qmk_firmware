@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DVORAK] = LAYOUT_planck_grid(
   KC_TAB,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,     KC_BSPC,  \
-  ESCMOD,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,     KC_SLSH, \
+  ESCMOD,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,     KC_SLSH, \
   KC_LSFT,  KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,     KC_SFTENT,  \
-  KC_LCTL,  KC_LGUI, KC_LALT, L_CMD,   LOWER,  KC_SPC,  KC_SPC,  RAISE,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_LCTL,  KC_LGUI, KC_LALT, L_CMD,   LOWER,   KC_SPC,  KC_SPC,  RAISE,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 [_LOWER] = LAYOUT_planck_grid(
@@ -112,10 +112,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_MOD] = LAYOUT_planck_grid( \
-  _______,  _______, _______, _______, _______, _______, KC_NLCK, KC_P7,   KC_P8,   KC_P9,   _______, _______,  \
-  _______,  _______, _______, _______, _______, _______, KC_P0,   KC_P4,   KC_P5,   KC_P6,   _______, _______,  \
-  _______,  _______, _______, _______, _______, _______, KC_PDOT, KC_P1,   KC_P2,   KC_P3,   KC_PENT, _______, \
-  _______,  _______, _______, _______, _______, _______, _______, KC_P0,   KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT  \
+  _______,  _______, _______, _______, _______, KC_NLCK, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSLS, _______,  \
+  _______,  _______, _______, _______, _______, KC_NUBS, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_PAST, _______,  \
+  _______,  _______, _______, _______, _______, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_PENT, _______, \
+  _______,  _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT  \
 ),
 
 /* Plover layer (http://opensteno.org)
