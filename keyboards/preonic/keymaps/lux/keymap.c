@@ -34,6 +34,7 @@
 #define S_RE LCTL(KC_R)
 #define S_RA LCTL(RSFT(KC_R))
 #define CTRLESC CTL_T(KC_ESC)
+#define ALTESC ALT_T(KC_ESC)
 #define ALTSP LALT(KC_SPACE)
 #define ALTE LALT(KC_E)
 #define TOG TG(_MOD)
@@ -80,17 +81,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_preonic_grid( \
   KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,  \
-  ESCMOD,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  L_CMD,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  KC_LCTL,  KC_LGUI, KC_LALT, L_CMD,   LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  L_MOD,    KC_LGUI, KC_LALT, CTRLESC, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 [_ALPHA] = LAYOUT_preonic_grid( \
   KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,  \
-  ESCCMD,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  L_CMD,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  KC_LCTL,  KC_LGUI, KC_LALT, L_MOD,   LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  CTRLESC,  KC_LGUI, KC_LALT, L_MOD,   LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 [_PIPEHITTER] = LAYOUT_preonic_grid( \
@@ -120,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,     KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
-  _______,  KC_VOLU, KC_DEL,  KC_BSPC, KC_ENT,  ALT_TAB,  _______,  KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR, KC_BSLS, \
+  L_MOD,   KC_VOLU, KC_DEL,  KC_BSPC, KC_ENT,  ALT_TAB,  _______,  KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR, KC_BSLS, \
   _______,  KC_VOLD, KC_MPLY, KC_MPRV, KC_MNXT, ALTE,     _______,  KC_UNDS, KC_PLUS, KC_LBRC, KC_RBRC, KC_PIPE, \
   _______,  _______, _______, _______, _______, _______,  _______,  _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
 ),
@@ -128,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
   KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  KC_CIRC,   KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,  \
-  _______,  _______, _______, _______, _______, _______,  _______,   KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR, KC_BSLS, \
+  L_MOD,   _______, _______, _______, _______, _______,  _______,   KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR, KC_BSLS, \
   _______,  _______, _______, _______, _______, _______,  _______,   KC_UNDS, KC_PLUS, KC_LBRC, KC_RBRC, KC_PIPE, \
   _______,  _______, _______, _______, _______, _______,  _______,   _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT  \
 ),
@@ -143,9 +144,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_CMD] = LAYOUT_preonic_grid( \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
-  _______, SWAPL,   S_GUI,   SWAPR,   S_R,     _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
-  _______, S_A,     S_S,     S_D,     S_F,     _______,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,  KC_ENT,  \
-  _______, S_Z,     S_X,     S_C,     S_V,     _______, KC_MNXT, KC_MUTE, KC_MPLY, _______, _______, _______, \
+  _______, SWAPL,   S_GUI,   SWAPR,   _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
+  _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,  KC_ENT,  \
+  _______, _______, _______, _______, _______, _______, KC_MNXT, KC_MUTE, KC_MPLY, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT  \
 ),
 
@@ -295,7 +296,7 @@ void dip_switch_update_user(uint8_t index, bool active) {
 }
 
 
-LEADER_EXTERNS();
+// LEADER_EXTERNS();
 
 void matrix_scan_user(void) {
 #ifdef AUDIO_ENABLE
@@ -329,30 +330,30 @@ if (is_alt_tab_active) {
 // Leader Key values --------
 
 
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
+  // LEADER_DICTIONARY() {
+  //   leading = false;
+  //   leader_end();
 
-    SEQ_ONE_KEY(KC_F) {
-      // Anything you can do in a macro.
-      SEND_STRING(SS_LCTRL("f"));
-    }
-    SEQ_ONE_KEY(KC_R) {
-      SEND_STRING(SS_LCTRL("r"));
-    }
-    SEQ_TWO_KEYS(KC_D, KC_D) {
-      SEND_STRING(SS_LCTRL("a")SS_LCTRL("c"));
-    }
-    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
-      SEND_STRING("https://start.duckduckgo.com"SS_TAP(X_ENTER));
-    }
-    SEQ_TWO_KEYS(KC_A, KC_S) {
-      register_code(KC_LGUI);
-      register_code(KC_S);
-      unregister_code(KC_S);
-      unregister_code(KC_LGUI);
-    }
-  }
+  //   SEQ_ONE_KEY(KC_F) {
+  //     // Anything you can do in a macro.
+  //     SEND_STRING(SS_LCTRL("f"));
+  //   }
+  //   SEQ_ONE_KEY(KC_R) {
+  //     SEND_STRING(SS_LCTRL("r"));
+  //   }
+  //   SEQ_TWO_KEYS(KC_D, KC_D) {
+  //     SEND_STRING(SS_LCTRL("a")SS_LCTRL("c"));
+  //   }
+  //   SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
+  //     SEND_STRING("https://start.duckduckgo.com"SS_TAP(X_ENTER));
+  //   }
+  //   SEQ_TWO_KEYS(KC_A, KC_S) {
+  //     register_code(KC_LGUI);
+  //     register_code(KC_S);
+  //     unregister_code(KC_S);
+  //     unregister_code(KC_LGUI);
+  //   }
+  // }
   
 // Leader Key values END -------
 }
