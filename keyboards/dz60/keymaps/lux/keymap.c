@@ -30,6 +30,10 @@
 #define SPACEM LT(_MOD, KC_SPC)
 #define SPACEC LT(_CMD, KC_SPC)
 
+enum dz60_layers {
+  BASE = SAFE_RANGE,
+  ALT
+};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
