@@ -5,6 +5,10 @@
     // #define AG_NORM_SONG SONG(IMPERIAL_MARCH)
     // #define AG_SWAP_SONG SONG(TO_BOLDLY_GO)
     // #define STARTUP_SONG SONG(NO_SOUND)
+    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
+                                  SONG(COLEMAK_SOUND), \
+                                  SONG(DVORAK_SOUND) \
+                                }
 #endif
 
 #define MUSIC_MASK (keycode != KC_NO)
@@ -39,3 +43,4 @@
 // #define TAPPING_TERM 200
 // #define LEADER_TIMEOUT 300
 
+#undef DEFAULT_LAYER_SONG
