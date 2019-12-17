@@ -17,8 +17,9 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-#define SWAPL LCTL(LGUI(KC_LEFT))
-#define SWAPR LCTL(LGUI(KC_RIGHT))
+#define MOVEL LALT(LCTL(KC_LEFT))
+#define MOVER LALT(LCTL(KC_RIGHT))
+#define VIEWD LCTL(KC_TAB)
 
 #define S_Z LCTL(KC_Z)
 #define S_X LCTL(KC_X)
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  ESCMOD,   CMD,     KC_LALT, KC_LCTL, GTIME,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  ESCMOD,   L_CMD,   KC_LALT, KC_LCTL, GTIME,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 [_COLEMAK] = LAYOUT_planck_grid(
@@ -139,8 +140,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_CMD] = LAYOUT_planck_grid( \
   _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, KC_MUTE, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,   _______,  \
-  _______, S_GUI,   KC_DEL,  KC_BSPC, KC_ENT,  S_TAB,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,  _______,  \
-  _______, SWAPL,   SWAPR,   ALTE,    S_TAB,   ALTE,    KC_PSCR, KC_SLCK, KC_PAUS, _______,  _______, _______, \
+  _______, S_GUI,   KC_DEL,  KC_BSPC, KC_ENT,  _______,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,  _______,  \
+  _______, _______, _______,   _______,    _______,   _______,    KC_PSCR, KC_SLCK, KC_PAUS, _______,  _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT  \
 ),
 
@@ -176,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_grid(
     _______, RESET,   DEBUG,   _______, _______, _______, _______, _______, _______,  _______,  _______,  KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  GAME,     COLEMAK,  DVORAK,   ______,  
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  GAME,     COLEMAK,  DVORAK,   _______,  
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______,  _______,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, BL_OFF,   BL_DEC,   BL_INC,   BL_ON
 )
