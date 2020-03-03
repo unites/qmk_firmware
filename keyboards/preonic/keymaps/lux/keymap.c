@@ -24,14 +24,6 @@
 #define MOVER LALT(LCTL(KC_RIGHT))
 #define VIEWD LCTL(KC_TAB)
 
-#define S_Z LCTL(KC_Z)
-#define S_X LCTL(KC_X)
-#define S_C LCTL(KC_C)
-#define S_V LCTL(KC_V)
-#define S_A LCTL(KC_A)
-#define S_S LCTL(KC_S)
-#define S_D LCTL(KC_D)
-#define S_F LCTL(KC_F)
 #define S_R LCTL(LSFT(KC_R))
 #define S_TAB LALT(KC_TAB)
 #define S_GUI LGUI(KC_TAB)
@@ -46,6 +38,7 @@
 #define ESCMOD LT(_MOD, KC_ESC)
 #define L_MOD MO(_MOD)
 #define L_SWAP MO(_SWAP)
+#define L_CMD MO(_CMD)
 
 #define SPACEM LT(_MOD, KC_SPC)
 #define SFTESC LSFT_T(KC_ESC)
@@ -80,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_preonic_grid( \
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
-  KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  L_CMD,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
   ESCMOD,   KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
@@ -95,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
-  KC_ESC,  KC_LCBR, KC_RCBR, _______, _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, _______,  \
-  KC_DEL,  KC_LPRN, KC_RPRN, KC_PLUS, KC_UNDS, _______, _______, KC_UNDS, KC_PLUS, KC_LPRN, KC_RPRN, _______,  \
-  _______, KC_LBRC, KC_RBRC, KC_EQL,  KC_MINS, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+  KC_ESC,  KC_LCBR, KC_RCBR, KC_DEL,  KC_BSPC, KC_DEL,  _______, _______, _______, KC_LCBR, KC_RCBR, _______,  \
+  _______, KC_LPRN, KC_RPRN, KC_PLUS, KC_UNDS, KC_ENT,  _______, KC_UNDS, KC_PLUS, KC_LPRN, KC_RPRN, _______,  \
+  _______, KC_LBRC, KC_RBRC, KC_EQL,  KC_MINS, KC_BSPC, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
 ),
 
 [_RAISE] = LAYOUT_preonic_grid( \
@@ -111,16 +104,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_MOD] = LAYOUT_preonic_grid( \
   KC_ESC,   _______, _______, _______,  _______,_______,  _______, _______, _______, KC_PSLS, KC_PAST, KC_NLCK, \
-  KC_ESC,   KC_F1,   KC_F2,   KC_F3,    KC_F4,  _______,    _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,  \
-  KC_DEL,   KC_F5,   KC_F6,   KC_F7,    KC_F8,  _______,    _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_NUBS,  \
-  _______,  KC_F9,   KC_F10,  KC_F11,   KC_F12, _______,     KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_ENT, \
+  KC_ESC,   KC_F1,   KC_F2,   KC_F3,    KC_F4,  _______,  _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,  \
+  KC_DEL,   KC_F5,   KC_F6,   KC_F7,    KC_F8,  _______,  _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_NUBS,  \
+  _______,  KC_F9,   KC_F10,  KC_F11,   KC_F12, _______,  KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_ENT, \
   _______,  _______, _______, _______,  _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
 ), 
 
 [_CMD] = LAYOUT_preonic_grid(
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
   _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
-  _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,  \
+  _______, KC_ESC,  KC_DEL,  KC_BSPC, KC_ENT,  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,  \
   _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ), 
