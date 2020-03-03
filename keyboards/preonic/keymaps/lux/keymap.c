@@ -45,7 +45,6 @@
 
 #define ESCMOD LT(_MOD, KC_ESC)
 #define L_MOD MO(_MOD)
-#define L_GAME MO(_GTIME)
 #define L_SWAP MO(_SWAP)
 
 #define SPACEM LT(_MOD, KC_SPC)
@@ -57,28 +56,20 @@ uint16_t alt_tab_timer = 0;
 
 enum preonic_layers {
   _BASE,
-  _GAMER,
-  _WINOS,
-  _MACOS,
-  _COLEMAK,
   _LOWER,
   _RAISE,
-  _GTIME,
   _MOD,
+  _CMD,
   _ADJUST,
   _SWAP
 };
 
 enum preonic_keycodes {
   BASE = SAFE_RANGE,
-  GAMER,
-  WINOS,
-  MACOS,
-  COLEMAK,
   LOWER,
   RAISE,
-  GTIME,
   MOD,
+  CMD,
   BACKLIT,
   ALT_TAB,
   SWAP
@@ -87,42 +78,10 @@ enum preonic_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_preonic_grid( \
-  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
+  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  ESCMOD,   KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-[_GAMER] = LAYOUT_preonic_grid( \
-  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
-  KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  ESCMOD,   LOWER,   KC_LALT, KC_LCTL, L_GAME,  KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-[_WINOS] = LAYOUT_preonic_grid( \
-  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
-  KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  ESCMOD,   KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-[_MACOS] = LAYOUT_preonic_grid( \
-  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
-  KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
-  ESCMOD,   KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-[_COLEMAK] = LAYOUT_preonic_grid( \
-  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,  \
-  KC_BSPC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
-  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,  \
   ESCMOD,   KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
@@ -136,10 +95,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
-  KC_ESC,  KC_MPLY, KC_MPRV, KC_MNXT, MOVEL,   MOVER,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
-  KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU, KC_ENT,  KC_PSCR, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,  \
-  _______, KC_LCBR, KC_RCBR, KC_EQL,  KC_MINS, KC_PAUS, KC_SLCK, _______, _______, _______, KC_MPLY, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT  \
+  KC_ESC,  KC_LCBR, KC_RCBR, _______, _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, _______,  \
+  KC_DEL,  KC_LPRN, KC_RPRN, KC_PLUS, KC_UNDS, _______, _______, KC_UNDS, KC_PLUS, KC_LPRN, KC_RPRN, _______,  \
+  _______, KC_LBRC, KC_RBRC, KC_EQL,  KC_MINS, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 [_RAISE] = LAYOUT_preonic_grid( \
@@ -150,26 +109,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  _______, _______, _______, _______, _______,  _______,  _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
 ),
 
-[_GTIME] = LAYOUT_preonic_grid(
-  KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
-  KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    _______,  KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
-  KC_DEL,   KC_5,    KC_6,    KC_7,    KC_8,    KC_PSCR,  KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______, _______,  \
-  _______,  KC_9,    KC_0,    KC_EQL,  KC_MINS, KC_PAUS,  KC_SLCK,  _______, _______, _______, KC_MPLY, _______, \
-  _______,  _______, _______, _______, _______, _______,  _______,  _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT  \
-),
-
 [_MOD] = LAYOUT_preonic_grid( \
-  KC_ESC,   MACOS,   COLEMAK, _______,  _______,_______,  _______, _______, _______, KC_PSLS, KC_PAST, KC_NLCK, \
-  KC_ESC,   KC_F1,   KC_F2,   KC_F3,    KC_F4,  WINOS,    _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,  \
-  KC_DEL,   KC_F5,   KC_F6,   KC_F7,    KC_F8,  GAMER,    _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_NUBS,  \
-  _______,  KC_F9,   KC_F10,  KC_F11,   KC_F12, BASE,     KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_ENT, \
+  KC_ESC,   _______, _______, _______,  _______,_______,  _______, _______, _______, KC_PSLS, KC_PAST, KC_NLCK, \
+  KC_ESC,   KC_F1,   KC_F2,   KC_F3,    KC_F4,  _______,    _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,  \
+  KC_DEL,   KC_F5,   KC_F6,   KC_F7,    KC_F8,  _______,    _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_NUBS,  \
+  _______,  KC_F9,   KC_F10,  KC_F11,   KC_F12, _______,     KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_ENT, \
   _______,  _______, _______, _______,  _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
+), 
+
+[_CMD] = LAYOUT_preonic_grid(
+  KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
+  _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  _______,  \
+  _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,  \
+  _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ), 
 
 [_ADJUST] = LAYOUT_preonic_grid( \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   \
-  _______, RESET,   _______, _______, _______, _______, _______, TERM_ON, TERM_OFF,COLEMAK, _______, _______,  \
-  _______, DEBUG,   MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, BASE,    WINOS,   GAMER,   MACOS,   _______, \
+  _______, RESET,   _______, _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, _______,  \
+  _______, DEBUG,   MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______, _______, _______, _______,  _______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 )
@@ -193,30 +152,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case BASE:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_BASE);
-          }
-          return false;
-          break;
-        case GAMER:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_GAMER);
-          }
-          return false;
-          break;
-        case WINOS:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_WINOS);
-          }
-          return false;
-          break;
-        case MACOS:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_MACOS);
-          }
-          return false;
-          break;
-        case COLEMAK:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_COLEMAK);
           }
           return false;
           break;
