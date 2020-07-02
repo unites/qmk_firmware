@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef USB_MAX_POWER_CONSUMPTION
+#    define USB_MAX_POWER_CONSUMPTION 100
+#endif
+
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)
     // #define AG_NORM_SONG SONG(IMPERIAL_MARCH)
