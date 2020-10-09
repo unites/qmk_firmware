@@ -1,0 +1,4 @@
+SRC += muse.c
+BACKLIGHT_ENABLE  = yes
+# COMBO_ENABLE = yes
+# LEADER_ENABLE = yes
