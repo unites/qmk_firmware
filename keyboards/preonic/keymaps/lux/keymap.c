@@ -69,6 +69,7 @@ uint16_t alt_tab_timer = 0;
 
 enum preonic_layers {
   _BASE,
+  _COLEMAK,
   _LOWER,
   _RAISE,
   _MOD,
@@ -78,6 +79,7 @@ enum preonic_layers {
 
 enum preonic_keycodes {
   BASE = SAFE_RANGE,
+  COLEMAK,
   LOWER,
   RAISE,
   MOD,
@@ -88,6 +90,20 @@ enum preonic_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+/* Base
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |  \   |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Ctrl |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  | Fn   | GUI  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+
 [_BASE] = LAYOUT_preonic_grid( \
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
@@ -96,65 +112,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   L_CMD,   KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
+[_COLEMAK] = LAYOUT_preonic_grid(
+  KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_DEL, \
+  KC_LCTL,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
+  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT, \
+  KC_ESC,   L_CMD,   KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+),
+
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_F11,  KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12, \
-  KC_GRV,  KC_LPRN, KC_RPRN,  KC_ENT,  KC_BSPC, KC_DEL,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_BSLS,  \
-  _______, KC_LCBR, KC_RCBR,  KC_PLUS, KC_EQL,  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, KC_PIPE,  \
-  _______, KC_LBRC, KC_RBRC,  KC_UNDS, KC_MINS, _______, _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, \
-  _______, _______, _______,  _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END  \
+  KC_GRV,  KC_LPRN, KC_RPRN,  KC_ENT,  KC_BSPC, KC_DEL,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_PIPE,  \
+  _______, KC_LCBR, KC_RCBR,  KC_PLUS, KC_EQL,  DM_PLY1, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MPRV, KC_MNXT,  \
+  _______, KC_LBRC, KC_RBRC,  KC_UNDS, KC_MINS, DM_REC1, DM_RSTP, KC_MUTE, KC_PSCR, KC_SLCK, KC_PAUS, _______, \
+  _______, _______, _______,  _______, _______, _______, _______, _______, KC_VOLD, KC_MPLY, KC_MUTE, KC_VOLU  \
 ),
 
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12,  \
-  _______,  KC_LPRN, KC_RPRN, _______, _______, _______,  _______,  _______, _______, KC_LPRN, KC_RPRN, KC_F24, \
-  _______,  KC_LCBR, KC_RCBR, _______, _______, _______,  _______,  _______, _______, KC_LCBR, KC_RCBR, KC_BSLS, \
-  _______,  KC_LBRC, KC_RBRC, _______, _______, _______,  _______,  _______, _______, KC_LBRC, KC_RBRC, _______, \
-  _______,  _______, _______, _______, _______, _______,  _______,  _______, _______, _______, _______, _______  \
+  _______,  KC_LPRN, KC_RPRN, KC_ENT,  KC_BSPC, KC_DEL,   KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_PIPE, \
+  _______,  KC_LCBR, KC_RCBR, KC_PLUS, KC_EQL,  DM_PLY2,  KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_MPRV, KC_MNXT, \
+  _______,  KC_LBRC, KC_RBRC, KC_UNDS, KC_MINS, DM_REC2,  DM_RSTP,  KC_MUTE, KC_PSCR, KC_SLCK, KC_PAUS, _______, \
+  _______,  _______, _______, _______, _______, _______,  _______,  _______, KC_VOLD, KC_MPLY, KC_MUTE, KC_VOLU  \
 ),
 
 [_MOD] = LAYOUT_preonic_grid( \
-  _______,  _______, _______, _______, _______, _______,  _______,  _______, _______, _______,  _______,  _______,  \
-  _______,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  _______,  _______,  _______, _______, _______,  _______,  _______,  \
-  KC_CAPS,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  _______,  _______,  _______, _______, _______,  _______,  _______,  \
-  _______,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  _______,  _______,  _______, _______, _______,  _______,  _______,  \
-  _______,  _______, _______, _______, _______, _______,  _______,  _______, KC_VOLD, KC_MPLY, KC_MUTE,  KC_VOLU  \
+  KC_F24,   KC_F21,  KC_F22,   KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F23,\
+  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
+  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
+  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
+  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 [_CMD] = LAYOUT_preonic_grid( \
-  _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_BSPC,\
-  _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, KC_NLCK, KC_P7,   KC_P8,   KC_P9,   KC_PMNS, KC_PSLS,  \
-  KC_CAPS, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, KC_PDOT, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAST,  \
-  _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  _______, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PENT, KC_PEQL,  \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+  _______,  _______, _______, KC_PGUP, KC_PSCR, KC_SLCK,  KC_PAUS, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_BSPC,\
+  KC_TAB,   KC_DEL,  KC_BSPC, KC_UP,   KC_ENT,  KC_SLCK,  KC_PAUS, KC_P7,   KC_P8,   KC_P9,   KC_PMNS, KC_PSLS,  \
+  KC_LCTL,  KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,   KC_PDOT, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAST,  \
+  KC_LSFT,  KC_F13,  KC_F14,  KC_PGDN, KC_F15,  KC_F16,  KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PENT, KC_PEQL,  \
+  KC_ESC,   L_CMD,   KC_LGUI, KC_LALT, LOWER,   KC_SPC,   KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ), 
 
 [_ADJUST] = LAYOUT_preonic_grid( \
-  RESET,   DEBUG,   AG_SWAP, AG_NORM, TERM_ON, TERM_OFF, KC_F6,   AU_ON,   AU_OFF,  MU_ON,   MU_OFF,  MU_TOG,   \
-  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,   KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  \
-  KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______  \
+  RESET,   DEBUG,   AG_SWAP, AG_NORM,  TERM_ON, TERM_OFF, KC_F6,   AU_ON,   AU_OFF,  MU_ON,   MU_OFF,  MU_TOG,   \
+  KC_F13,  KC_F14,  KC_F15,  KC_F16,   KC_F17,  KC_F18,   KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  \
+  KC_CAPS, DM_REC1, DM_RSTP, DM_PLY1,  DM_PLY2, _______, _______, _______, _______,  _______, _______, _______, \
+  _______, DM_REC2, DM_RSTP, COLEMAK,  CMD,     BASE,    _______, _______, _______,  _______, _______, _______, \
+  _______, _______, _______, _______,  _______, _______, _______, _______, _______,  _______, _______, _______  \
 )
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case ALT_TAB:
-          if (record->event.pressed) {
-            if (!is_alt_tab_active) {
-              is_alt_tab_active = true;
-              register_code(KC_LALT);
-            } 
-            alt_tab_timer = timer_read();
-            register_code(KC_TAB);
-          } else {
-            unregister_code(KC_TAB);
-          }
-          break;
         case BASE:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_BASE);
+          }
+          return false;
+          break;
+        case COLEMAK:
+          if (record->event.pressed) {
+            set_single_persistent_default_layer(_COLEMAK);
+          }
+          return false;
+          break;
+        case CMD:
+          if (record->event.pressed) {
+            set_single_persistent_default_layer(_CMD);
           }
           return false;
           break;
@@ -248,7 +272,6 @@ void dip_switch_update_user(uint8_t index, bool active) {
             }
     }
 }
-
 
 // LEADER_EXTERNS();
 
